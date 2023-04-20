@@ -1,7 +1,7 @@
 project_name: "viz-histogram-marketplace"
 
 constant: VIS_LABEL {
-  value: "Histogram"
+  value: "test_darren"
   export: override_optional
 }
 
