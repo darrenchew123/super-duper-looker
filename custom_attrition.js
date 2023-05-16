@@ -20,19 +20,6 @@ const visObject = {
         // Log the data
         console.log(data);
 
-        // Then log the calculated x values:
-        newHiresBars.data().forEach((d, i) => {
-            console.log('New hires x:', x(d.new_hires / total));
-        });
-
-        headcountBars.data().forEach((d, i) => {
-            console.log('Headcount x:', x(0.5 - (d.headcount / total) / 2));
-        });
-
-        leaversBars.data().forEach((d, i) => {
-            console.log('Leavers x:', x(1 - d.leavers / total));
-        });
-
         // Since D3 is loaded asynchronously, ensure it's loaded before using it
         var checkD3Ready = setInterval(function() {
           if (typeof d3 !== 'undefined') {
@@ -155,6 +142,19 @@ const visObject = {
               return x(d.leavers / total);
           })
           .attr("height", y.bandwidth() / 2);
+
+        // Then log the calculated x values:
+        newHiresBars.data().forEach((d, i) => {
+            console.log('New hires x:', x(d.new_hires / total));
+        });
+
+        headcountBars.data().forEach((d, i) => {
+            console.log('Headcount x:', x(0.5 - (d.headcount / total) / 2));
+        });
+
+        leaversBars.data().forEach((d, i) => {
+            console.log('Leavers x:', x(1 - d.leavers / total));
+        });
 
       function addPercentageLabels(bars, property, xOffset, widthFactor) {
           bars.data().forEach((d, i) => {
