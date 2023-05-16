@@ -1,17 +1,17 @@
 project_name: "viz-histogram-marketplace"
 
 constant: VIS_LABEL {
-  value: "test_darren"
+  value: "test_darren_custom"
   export: override_optional
 }
 
 constant: VIS_ID {
-  value: "histogram-marketplace"
+  value: "custom_viz"
   export:  override_optional
 }
 
 visualization: {
   id: "@{VIS_ID}"
-  file: "histogram.js"
+  file: "custom_attrition.js"
   label: "@{VIS_LABEL}"
 }
