@@ -18,7 +18,7 @@ const visObject = {
     updateAsync: function(data, element, config, queryResponse, details, doneRendering) {
         // The rest of your original code goes here.
         // Log the data
-        console.log(data);
+        console.log(data[0]);
 
         // Since D3 is loaded asynchronously, ensure it's loaded before using it
         var checkD3Ready = setInterval(function() {
