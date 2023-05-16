@@ -53,29 +53,27 @@ const visObject = {
       let dataMap = {};
 
       data.forEach(item => {
-          let jobLevel = item.job_level.value;
-          let employeeStatus = item.employee_status.value;
-
-          if (!dataMap[jobLevel]) {
-              dataMap[jobLevel] = {
-                  job_level: jobLevel,
+          let job_level = item.job_level.value;
+          let employee_status = item.employee_status.value;
+          if (!dataMap[job_level]) {
+              dataMap[job_level] = {
+                  job_level: job_level,
                   headcount: 0,
                   new_hires: 0,
                   leavers: 0
               };
           }
 
-          if (employeeStatus === 'existing') {
-              dataMap[jobLevel].headcount += 1;
-          } else if (employeeStatus === 'new_hire') {
-              dataMap[jobLevel].new_hires += 1;
-          } else if (employeeStatus === 'leaver') {
-              dataMap[jobLevel].leavers += 1;
+          if (employee_status === 'existing') {
+              dataMap[job_level].headcount += 1;
+          } else if (employee_status === 'new_hire') {
+              dataMap[job_level].new_hires += 1;
+          } else if (employee_status === 'leaver') {
+              dataMap[job_level].leavers += 1;
           }
       });
 
       let employeeData = Object.values(dataMap);
-
 
       const max_value = d3.max(employeeData, function(d) {
           return d.headcount + d.new_hires + d.leavers;
