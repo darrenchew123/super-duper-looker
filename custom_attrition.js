@@ -7,9 +7,12 @@ const visObject = {
         }
     },
 
-    create: function(element, config) {},
-
     updateAsync: function(data, element, config, queryResponse, details, doneRendering) {
+
+        //log data
+        console.log('Data: ', data);
+        console.log('Query Response: ', queryResponse);
+
         var svg = d3.select(element).append("svg")
             .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.top + margin.bottom)
