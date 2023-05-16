@@ -7,11 +7,15 @@ const visObject = {
         }
     },
 
-    create: function(element, config) {
-        element.innerHTML = "<h1>Ready to render!</h1>";
-    },
+    create: function(element, config) {},
 
     updateAsync: function(data, element, config, queryResponse, details, doneRendering) {
+        var svg = d3.select(element).append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform",
+                "translate(" + margin.left + "," + margin.top + ")");
 
 
         var margin = {
@@ -146,7 +150,7 @@ const visObject = {
         addPercentageLabels(leaversBars, 'leavers', d => 1 - d.leavers / total, d => d.leavers / total);
 
         const gap = 10;  // Define a gap size, adjust to your needs
-        
+
         const categoryRects = svg.selectAll(".category-rect")
             .data(employeeData)
             .enter().append("rect")
@@ -159,7 +163,7 @@ const visObject = {
             })
             .attr("width", margin.left - 2 * gap)  // Subtract the gap from the width
             .attr("height", y.bandwidth() / 2);
-        
+
         // Add text labels for each rectangle
         const categoryLabels = svg.selectAll(".category-label")
             .data(employeeData)
@@ -176,7 +180,7 @@ const visObject = {
                 return d.job_level;
             });
 
-        
+
 
         function addCategoryLabel(xOffset, widthFactor, label) {
             svg.append('text')
