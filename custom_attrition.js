@@ -17,7 +17,21 @@ const visObject = {
 
     updateAsync: function(data, element, config, queryResponse, details, doneRendering) {
         // The rest of your original code goes here.
+        // Log the data
+        console.log(data);
 
+        // Then log the calculated x values:
+        newHiresBars.data().forEach((d, i) => {
+            console.log('New hires x:', x(d.new_hires / total));
+        });
+
+        headcountBars.data().forEach((d, i) => {
+            console.log('Headcount x:', x(0.5 - (d.headcount / total) / 2));
+        });
+
+        leaversBars.data().forEach((d, i) => {
+            console.log('Leavers x:', x(1 - d.leavers / total));
+        });
 
         // Since D3 is loaded asynchronously, ensure it's loaded before using it
         var checkD3Ready = setInterval(function() {
