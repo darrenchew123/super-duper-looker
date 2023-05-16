@@ -208,3 +208,4 @@ const visObject = {
 };
 
 looker.plugins.visualizations.add(visObject);
+looker.plugins.visualizations.addExternalJS('https://d3js.org/d3.v5.min.js');
