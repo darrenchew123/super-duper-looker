@@ -7,6 +7,7 @@ const visObject = {
         }
     },
 
+  // make adjustment on render, dependencies and script.async = true
     create: function(element, config) {
         element.innerHTML = "<h1>Ready to render!</h1>";
         var script = document.createElement('script');
@@ -16,8 +17,8 @@ const visObject = {
     },
 
     updateAsync: function(data, element, config, queryResponse, details, doneRendering) {
-        // The rest of your original code goes here.
         // Log the data
+        // good to have
         console.log(data[0]);
 
         // Since D3 is loaded asynchronously, ensure it's loaded before using it
@@ -26,7 +27,6 @@ const visObject = {
             clearInterval(checkD3Ready);
 
             // Your D3 code goes here
-            // I've copied a part of your code here as an example
             var margin = {
                 top: 50,
                 right: 50,
@@ -173,7 +173,7 @@ const visObject = {
       addPercentageLabels(headcountBars, 'headcount', d => 0.5 - (d.headcount / total) / 2, d => d.headcount / total);
       addPercentageLabels(leaversBars, 'leavers', d => 1 - d.leavers / total, d => d.leavers / total);
 
-      const gap = 10;  // Define a gap size, adjust to your needs
+      const gap = 10;  // Define a gap size
 
       const categoryRects = svg.selectAll(".category-rect")
           .data(employeeData)
